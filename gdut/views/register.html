@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+		<title><%= title %></title>
+	<style type="text/css">
+		html,body,h1,input{margin:0;padding: 0;}
+		html,body{overflow: hidden;font-family:"Microsoft YaHei";}
+		.bg_trangle{
+			width: 0;
+			height: 0;
+			border-top:800px solid #3189D1;
+			border-left:800px solid transparent;
+			border-right:800px solid transparent;
+			border-bottom:800px solid transparent;
+			position: absolute;
+			right: 4000px;
+			z-index: -1;
+		}
+		h1{
+			position: absolute;
+			right: 3000px;
+			top: 5%;
+			z-index: 3;
+			font-size:25px;
+			color: white;
+		}
+		.bg_img{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: -2;
+			background: url(images/libraryGDUT.jpg) no-repeat;
+			background-size: 100% 100%; 
+		}
+		#login{
+			width: 400px;
+			box-shadow: 2px 1px 10px #777;
+			border:1px solid #888;
+			border-radius: 1%;
+			text-align: left;
+			padding: 30px;
+			margin: 10% auto;
+			overflow: hidden;
+			
+			background:white;
+			}
+		
+		.message{text-align: center;}
+		.message_down{color: red;}
+		dd{margin-left:80px;}
+		label{font-size: 12px;}
+		input {
+			width:200px;
+			height: 30px;
+			text-indent: 5px;
+			border:1px solid #777;
+			margin-bottom: 10px;
+			border-radius: 5%;
+		}
+		input:focus{border:1px #1273C3 solid;}
+		#register{font-size: 15px;margin-top: 10px;background: #3189D1;color: white;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<h1 class="h1_title">GDUT电子电工自测系统-注册信息</h1>
+	<div class="bg_trangle">
+	</div>
+	<div class="bg_img">
+		</div>
+	<form id="login">
+		<dl>
+			<dt class="title">
+				<p class="message"><%- message %></p>
+				<p class="message_down"></p>
+			</dt>		
+			<dd><label for="username">账号(请使用教师工号注册)</label></dd>
+			<dd>	
+				<input type="text" id="username" name="username" placeholder="请输入账号">
+			</dd>
+			<dd>
+				<label for="password">密码</label>
+			</dd>
+			<dd>
+				<input type="password" id="password" name="password" placeholder="请输入密码">
+			</dd>
+				<dd>
+				<label for="password-same">密码</label>
+			</dd>
+			<dd>
+				<input type="password" id="password-same" name="password-same" placeholder="请输入密码">
+			</dd>
+			<dd>
+				<input type="button" value="注册" id="register">
+				<a href="login" id="login_btn">回去登录-&gt;</a>
+			</dd>
+			
+		</dl>
+	</form>
+	<script src="/javascripts/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		if (!$.support.leadingWhitespace) {
+       location.href = "http://www.zi-han.net/error/ie.html";
+     }; 
+			$(".bg_trangle").animate({"right":"200px"},500);
+			$(".h1_title").animate({"right":"600px"},500);
+		$("#login_btn").click(function(){ 
+			location.href = 'login';
+		});
+		$("#register").click(function(){ 
+			var username = $("#username").val();
+			var password = $("#password").val();
+			var password_same = $("#password-same").val();
+			if(password !== password_same){ 
+				$("#password").css("border","1px solid red");
+				$("#password-same").css("border","1px solid red");
+				$(".message_down").text("两次密码不一致！");
+			}
+			else if (username ==""||username.length>8) {
+				$("#username").css("border","1px solid red");
+				$(".message_down").text("帐号格式错误,不超过8位且不为空");
+				$(".bg_trangle").css("border-top","800px solid red");
+
+			}
+			else if (password ==""||password.length>10) {
+				$("#password").css("border","1px solid red");
+				$(".message_down").text("密码格式错误,不超过10且不为空");
+			}
+			else if (password === password_same&&username.length<=8&&password.length<=10){
+				var data = {"user_name":username,"user_pwd":password};
+				$.ajax({ 
+					url: '/register',
+					type: 'post',
+					data: data,
+					success: function(data,status){ 
+						if(status == 'success'){ 
+							location.href = 'login';
+						}
+					},
+					error: function(data,err){ 
+							location.href = 'register';
+					}
+				}); 
+			}
+		});
+	});
+</script>
+</body>
+</head>
+</html>

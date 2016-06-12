@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<title><%= title%></title>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+</head>
+<body >
+	<div class="header">
+		<div class="container">
+			<h1>GDUT在线网络教学系统</h1>
+			<p><a href="http://119.29.239.224:3000/">回到主页</a></p>
+			<p class="header_right">
+				欢迎您！<a href="login" id="userName"><%- user.name%></a> 
+				<a href="logout">注销</a>
+				<a href="login">更换帐号</a>
+			</p>
+		</div>
+	</div>
+	
+	<div class="article">
+		
+		<div class="section_right">
+			<div class="section_change">
+				<p class="danxuan"><a href="javascript:;">单选题</a></p>
+				<p class="duoxuan"><a href="javascript:;">多选题</a></p>
+				<p class="essay"><a href="javascript:;">问答题</a></p>
+			</div>
+			<div class="section_select">
+					<!-- 单选或者多选提示 -->
+			</div>
+				<!-- 	<ul class="section section1"></ul>
+			<ul class="section section2"></ul>
+			<ul class="section section3"></ul>
+			<ul class="section section4"></ul>
+			<ul class="section section5"></ul> -->
+		</div>
+	</div>
+
+	
+	<div class="board">
+		
+		<h2>添加题目</h2>
+		<div id="board_trangle" class="trangle trangle_close"></div>
+		<iframe src="message" frameborder="0" class="message_frame"></iframe>
+		 <div id="img_message"></div>
+		<div class="putboard">
+			<div class="userQuestion"><span>题目：</span><textarea name="user_question" cols="55" rows="8" maxlength="300" id="user_question" placeholder="(文本需换行请在后面添加'<br>'标签)"></textarea></div>
+		<div class="questionImg">
+
+			<form  enctype='multipart/form-data' method='post' action='javascript:;' role = "form" id ="question_img">      
+            <input type = "file" name = "files" id="question_img_file" />
+            <button class = "button question_img_btn"  id="upload"><a href="javascript:;">上传</a></button>
+           
+			</form>
+        	<input type="text" id="textURL" disabled placeholder="题目图片"><a href="javascript:;" class="delete_quest" style="display:none">撤销</a>
+		</div>
+
+			<div class="question_input">
+				<!-- 			<div>
+				<span>A:&nbsp;</span><input type="text" id="user_selectA" maxlength="30">
+				<span>B:&nbsp;</span><input type="text" id="user_selectB" maxlength="30">
+				<span>C:&nbsp;</span><input type="text" id="user_selectC" maxlength="30">
+				<span>D:&nbsp;</span><input type="text" id="user_selectD" maxlength="30">
+			</div> -->
+			</div>
+			<div class="select_img">
+				<form  enctype='multipart/form-data' method='post' action='javascript:;' role = "form" id = "img_A" class="img_answer">      
+	            <input type = "file" name = "files" id="img_file_A" />
+	            <button id="upload_A" style="color:black"><a  href="javascript:;" style="color:black">上传</a></button>
+				</form>
+	        	<input type="text" id="textURL_A" disabled placeholder="A选项图片"><a href="javascript:;" class="delete_A" style="display:none;color:black;">撤销</a>
+
+	        	<form  enctype='multipart/form-data' method='post' action='javascript:;' role = "form" id = "img_B" class="img_answer">      
+	            <input type = "file" name = "files" id="img_file_B" />
+	           <button  id="upload_B" style="color:black"><a  href="javascript:;" style="color:black">上传</a></button>
+				</form>
+	        	<input type="text" id="textURL_B" disabled placeholder="B选项图片"><a href="javascript:;" class="delete_B" style="display:none;color:black;">撤销</a>
+
+	        	<form  enctype='multipart/form-data' method='post' action='javascript:;' role = "form" id = "img_C" class="img_answer">      
+	            <input type = "file" name = "files" id="img_file_C" />
+	           <button  id="upload_C" style="color:black"><a  href="javascript:;" style="color:black">上传</a></button>
+				</form>
+	        	<input type="text" id="textURL_C" disabled placeholder="C选项图片"><a href="javascript:;" class="delete_C" style="display:none;color:black;">撤销</a>
+
+	        	<form  enctype='multipart/form-data' method='post' action='javascript:;' role = "form" id = "img_D" class="img_answer">      
+	            <input type = "file" name = "files" id="img_file_D" />
+	            <button  id="upload_D" style="color:black"><a  href="javascript:;" style="color:black">上传</a></button>
+				</form>
+	        	<input type="text" id="textURL_D" disabled placeholder="D选项图片"><a href="javascript:;" class="delete_D" style="display:none;color:black;">撤销</a>
+			</div>
+		<div class="correct_answer">
+			<span>正确答案:&nbsp;</span><br/>
+			<div class="answer_input">
+			<!-- 
+				<span>A:</span><input type="radio" id="correct_A" name="correct_select" value="A">
+				<span>B:</span><input type="radio" id="correct_B" name="correct_select" value="B">
+				<span>C:</span><input type="radio" id="correct_C" name="correct_select" value="C">
+				<span>D:</span><input type="radio" id="correct_D" name="correct_select" value="D"> -->
+			</div>
+			<div class="new_button button"><a href="javascript:;">提交</a></div>
+		</div>
+		</div>
+	</div>
+</body>
+	<script type="text/javascript">
+
+		
+	</script>
+	<script src="/javascripts/studygdut.js"></script>
+	<script>
+
+	$(function(){
+		board_button.init();
+		board_send.init();
+		question_bank.init();
+	});
+	</script>
+</html>

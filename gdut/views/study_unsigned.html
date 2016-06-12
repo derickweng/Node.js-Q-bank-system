@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= title%></title>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+</head>
+<body >
+	<div class="header">
+		<div class="container">
+			<h1>GDUT在线网络教学系统</h1>
+			<p><a href="http://119.29.239.224:3000/">回到主页</a></p>
+			<p class="header_right">
+				<a href="login">使用管理员帐号登录</a>
+			</p>
+		</div>
+	</div>
+	
+	<div class="article">
+		
+		<div class="section_right">
+			<div class="section_change">
+				<p class="danxuan"><a href="javascript:;">单选题</a></p>
+				<p class="duoxuan"><a href="javascript:;">多选题</a></p>
+				<p class="essay"><a href="javascript:;">问答题</a></p>
+			</div>
+			<div class="section_select">
+				<!-- 单选或者多选提示 -->
+			</div>
+		</div>
+	</div>
+</body>
+	<script src="/javascripts/studygdut.js"></script>
+	<script>
+		question_bank.init();
+	</script>
+</html>

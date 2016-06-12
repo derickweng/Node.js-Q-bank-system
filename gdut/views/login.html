@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<title><%= title %></title>
+	
+	<style>
+		html,body,h1,dl,dt,dd,input{margin:0;padding:0;}
+		html,body{height: 100%;overflow: hidden;font-family:"Microsoft YaHei";}
+		.particular {
+			width:100%;
+			height: 100%;
+			position: absolute;
+			z-index: -1;
+		}
+		#login{
+			width: 400px;
+			box-shadow: 2px 1px 10px #777;
+			border:1px solid #888;
+			border-radius: 1%;
+			text-align: left;
+			padding: 30px;
+			margin: 10% auto;
+			overflow: hidden;
+			
+			background:white;
+			}
+		h1 {font-size:25px;margin-bottom: 20px;text-align: center;}
+		.message{text-align: center;}
+		dd{margin-left:80px;}
+		label{font-size: 12px;}
+		input {
+			width:200px;
+			height: 30px;
+			text-indent: 5px;
+			border:1px solid #777;
+			margin-bottom: 10px;
+			border-radius: 5%;
+		}
+		input:focus{border:1px #1273C3 solid;}
+		#val_btn{background: #3189D1;color: white;}
+		#simple_btn{background: red;color: white;}
+		#inputCode{margin-right: 20px;float: left;}
+		#indentCode {width:60px;height:30px;background: black;display:inline;}
+		#register{font-size: 15px;margin-top: 30px;color:black;}
+	</style>
+</head>
+<body>	
+	<div class="particular">
+	</div>
+	<form  id="login">
+		<dl>
+			<dt class="title">
+				<h1>电子电工学在线自测系统</h1>
+				<p class="message"><%- message %></p>
+			</dt>		
+			<dd><label for="username">账号(教师工号)</label></dd>
+			<dd>	
+				<input type="text" id="username" name="username" placeholder="请输入账号" >
+			</dd>
+			<dd>
+				<label for="password">密码</label>
+			</dd>
+			<dd>
+				<input type="password" id="password" name="password" placeholder="请输入密码">
+			</dd>
+			<dd>
+				<label>验证码</label>
+			</dd>
+			<dd>						
+				<input type="text" id="inputCode" placeholder="请输入验证码" maxlength="4">
+				<canvas onClick="createCode()" id="indentCode">
+						您的浏览器不支持HTML5！
+				</canvas>
+			</dd>			
+			<dd>
+				<input type="button" value="登录" onClick="validate()" id="val_btn">
+					<a href="register" id="register">立即注册-&gt;</a>
+			</dd>
+			<dd>
+				<input type="button" value="不登陆直接进行测试" onClick="simple_link()" id="simple_btn">
+			</dd>
+		</dl>
+	</form>
+
+</body>
+	<script src="/javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/form.js"></script>
+	<script type="text/javascript" src="/javascripts/Particleground.js"></script>
+	<script>
+	$(document).ready(function(){
+		$(".particular").particleground({
+			dotColor:'#1273C3',
+			lineColor:'#1273C3',
+		});
+		if (!$.support.leadingWhitespace) {
+       location.href = "http://www.zi-han.net/error/ie.html";
+     }; 
+		
+	})		
+	</script>
+</html>
